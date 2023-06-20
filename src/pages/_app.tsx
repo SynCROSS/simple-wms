@@ -1,24 +1,14 @@
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import { Client, Server } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
 import { BaseProvider, LightTheme, DarkTheme } from "baseui";
+import RenderIfAuthenticated from "~/components/common/RenderIfAuthenticated";
+import Layout from "~/components/common/Layout";
+import { engine } from "~/styletron";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
-
-const getHydrateClass = (): HTMLCollectionOf<HTMLStyleElement> =>
-  document.getElementsByClassName(
-    "_styletron_hydrate_"
-  ) as HTMLCollectionOf<HTMLStyleElement>;
-
-const engine =
-  typeof window === "undefined"
-    ? new Server()
-    : new Client({
-        hydrate: getHydrateClass(),
-      });
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -35,7 +25,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
               : LightTheme
           }
         >
-          <Component {...pageProps} />
+          <RenderIfAuthenticated>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </RenderIfAuthenticated>
         </BaseProvider>
       </StyletronProvider>
     </SessionProvider>
