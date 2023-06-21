@@ -4,7 +4,6 @@ import { Block } from "baseui/block";
 import SideNav from "baseui/side-navigation/nav";
 
 const items = [
-  { title: "홈", itemId: "/" },
   { title: "입고", itemId: "/inbound" },
   { title: "재고", itemId: "/items" },
   { title: "출고", itemId: "/outbound" },
