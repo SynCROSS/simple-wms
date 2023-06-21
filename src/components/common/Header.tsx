@@ -2,6 +2,7 @@ import { useStyletron } from "baseui";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { AppNavBar } from "baseui/app-nav-bar";
+import { getBaseUrl } from "~/utils/api";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -19,7 +20,14 @@ const Header = () => {
           })}
           tabIndex={0}
           role="button"
-          onClick={session ? () => void signOut() : () => void signIn()}
+          onClick={
+            session
+              ? () => void signOut()
+              : () =>
+                  void signIn(undefined, {
+                    callbackUrl: `${getBaseUrl()}/items`,
+                  })
+          }
         >
           {session ? "로그아웃" : "로그인"}
         </div>

@@ -5,6 +5,7 @@ import { Session } from "next-auth";
 import { useStyletron } from "baseui";
 import { HeadingXXLarge, ParagraphLarge } from "baseui/typography";
 import { Button, KIND } from "baseui/button";
+import { getBaseUrl } from "~/utils/api";
 const RenderIfAuthenticated: FC<
   PropsWithChildren<{ session?: Session | null }>
 > = ({ children }) => {
@@ -28,7 +29,9 @@ const RenderIfAuthenticated: FC<
           <Button
             kind={KIND.tertiary}
             type="button"
-            onClick={() => void signIn()}
+            onClick={() =>
+              void signIn(undefined, { callbackUrl: `${getBaseUrl()}/items` })
+            }
           >
             인증하러 가기
           </Button>
