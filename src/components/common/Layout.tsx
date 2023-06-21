@@ -2,26 +2,25 @@ import type { FC, PropsWithChildren } from "react";
 import Header from "~/components/common/Header";
 import SideNavigation from "~/components/common/SideNavigation";
 import { Block } from "baseui/block";
+import { useStyletron } from "baseui";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
+  const [css, theme] = useStyletron();
   return (
-    <Block maxHeight={"100vh"}>
+    <Block height={"100vh"} display={"flex"} flexDirection={"column"}>
       <Header />
       <Block
         display={"flex"}
         flexWrap
-        justifyContent={"space-between"}
+        flex={"1 1 0"}
+        // justifyContent={"space-between"}
         alignItems={"flex-start"}
       >
         <SideNavigation />
         <Block
-          width={"40em"}
           flex={1}
-          display={"flex"}
-          flexDirection={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          margin={"auto"}
+          height={"100%"}
+          backgroundColor={theme.colors.backgroundPrimary}
         >
           {children}
         </Block>

@@ -14,7 +14,12 @@ const SideNavigation = () => {
   const router = useRouter();
 
   return (
-    <Block width={"15em"}>
+    <Block
+      width={"15em"}
+      height={"100%"}
+      display={"flex"}
+      flexDirection={"column"}
+    >
       <SideNav
         items={items}
         activeItemId={router.pathname}
@@ -22,6 +27,7 @@ const SideNavigation = () => {
           Root: {
             style: ({ $theme }) => ({
               backgroundColor: $theme.colors.backgroundPrimary,
+              flex: 1,
             }),
           },
         }}
