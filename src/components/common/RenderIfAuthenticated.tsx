@@ -2,30 +2,36 @@ import { Block } from "baseui/block";
 import { signIn, useSession } from "next-auth/react";
 import type { FC, PropsWithChildren } from "react";
 import { Session } from "next-auth";
-
+import { useStyletron } from "baseui";
+import { HeadingXXLarge, ParagraphLarge } from "baseui/typography";
+import { Button, KIND } from "baseui/button";
 const RenderIfAuthenticated: FC<
   PropsWithChildren<{ session?: Session | null }>
 > = ({ children }) => {
   const { data: session, status } = useSession();
 
+  const [css, theme] = useStyletron();
+
   return (
     <>
       {status === "unauthenticated" && (
         <Block
+          className={css({ inset: 0 })}
           position={"absolute"}
-          top={0}
-          left={0}
-          right={0}
-          bottom={0}
           display={"flex"}
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
+          backgroundColor={theme.colors.backgroundPrimary}
         >
-          <p>⚠️ 인증이 필요합니다. ⚠️</p>
-          <button type="button" onClick={() => void signIn()}>
+          <HeadingXXLarge>⚠️ 인증이 필요합니다. ⚠️</HeadingXXLarge>
+          <Button
+            kind={KIND.tertiary}
+            type="button"
+            onClick={() => void signIn()}
+          >
             인증하러 가기
-          </button>
+          </Button>
         </Block>
       )}
       {session && children}
