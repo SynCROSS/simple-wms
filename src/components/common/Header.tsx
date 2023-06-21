@@ -1,10 +1,7 @@
-import { Button } from "baseui/button";
-import { Layer } from "baseui/layer";
 import { useStyletron } from "baseui";
 import { signIn, signOut, useSession } from "next-auth/react";
 
-import { AppNavBar, setItemActive } from "baseui/app-nav-bar";
-import { ChevronDown, Delete, Overflow, Upload } from "baseui/icon";
+import { AppNavBar } from "baseui/app-nav-bar";
 
 const Header = () => {
   const { data: session } = useSession();
