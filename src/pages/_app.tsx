@@ -9,6 +9,7 @@ import { engine } from "~/styletron";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import "sanitize.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,

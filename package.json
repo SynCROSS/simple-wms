@@ -23,6 +23,7 @@
     "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sanitize.css": "^13.0.0",
     "styletron-engine-atomic": "^1.5.0",
     "styletron-react": "^6.1.0",
     "superjson": "1.12.3",
