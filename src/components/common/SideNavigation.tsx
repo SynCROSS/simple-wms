@@ -27,6 +27,7 @@ const SideNavigation = () => {
             style: ({ $theme }) => ({
               backgroundColor: $theme.colors.backgroundPrimary,
               flex: 1,
+              borderRight: `1px solid ${$theme.colors.borderOpaque}`,
             }),
           },
         }}
