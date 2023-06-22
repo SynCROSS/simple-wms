@@ -12,7 +12,6 @@ export const itemRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      console.table(input);
       return await ctx.prisma.item.findMany({
         where: {
           ownerId: ctx.session.user.id,

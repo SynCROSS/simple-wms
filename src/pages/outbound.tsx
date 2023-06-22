@@ -135,18 +135,6 @@ const Outbound = () => {
   const closeModal = ({ ship = false } = {}) => {
     setIsOpen(false);
     const indexes = Object.keys(rowSelection);
-    console.log(
-      ` -----------------------------------------------------------------------------------------------------------------------------`
-    );
-    console.log(
-      `file: outbound.tsx:139 | closeModal | ship && items.data && indexes.length !== 0:`,
-      ship,
-      items.data?.length === 0,
-      indexes.length !== 0
-    );
-    console.log(
-      ` -----------------------------------------------------------------------------------------------------------------------------`
-    );
     if (ship && indexes.length !== 0) {
       const itemIds = new Set<string>().add(
         typeof query.itemId === "string" ? query.itemId : ""
@@ -379,9 +367,7 @@ const Outbound = () => {
             <tbody>
               {Children.toArray(
                 table.getRowModel().rows.map((row) => (
-                  <StyledTableBodyRow
-                    onDoubleClick={() => void console.table(row.original)}
-                  >
+                  <StyledTableBodyRow>
                     {Children.toArray(
                       row.getVisibleCells().map((cell) => {
                         if (
