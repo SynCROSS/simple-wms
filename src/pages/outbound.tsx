@@ -405,7 +405,16 @@ const Outbound = () => {
         </StyledRoot>
       </Block>
       {isOpen && (
-        <Modal onClose={() => void closeModal()} isOpen={isOpen}>
+        <Modal
+          onClose={() => void closeModal()}
+          isOpen={isOpen}
+          animate={
+            typeof window !== "undefined" &&
+            window.matchMedia("prefers-reduced-motion").matches
+          }
+          size={SIZE.auto}
+          role={ROLE.dialog}
+        >
           <ModalHeader>출고하시겠습니까?</ModalHeader>
           <ModalBody>
             출고하게 되면 수량이 1씩 줄어들게 됩니다. 수량이 1 이하일 경우 검색

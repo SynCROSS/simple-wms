@@ -336,7 +336,16 @@ const Items = () => {
         </StyledRoot>
       </Block>
       {isOpen && item && (
-        <Modal onClose={() => void closeModal()} isOpen={isOpen}>
+        <Modal
+          onClose={() => void closeModal()}
+          isOpen={isOpen}
+          animate={
+            typeof window !== "undefined" &&
+            window.matchMedia("prefers-reduced-motion").matches
+          }
+          size={SIZE.auto}
+          role={ROLE.dialog}
+        >
           <ModalHeader>상품 상세 정보</ModalHeader>
           <ModalBody>
             <Block marginBottom={"3em"}>
