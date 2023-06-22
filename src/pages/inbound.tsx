@@ -1,11 +1,9 @@
-import { Item } from "@prisma/client";
 import { useStyletron } from "baseui";
 import { Block } from "baseui/block";
 import { Button, KIND } from "baseui/button";
 import { FormControl } from "baseui/form-control";
 import { Input } from "baseui/input";
 import { Textarea } from "baseui/textarea";
-import { SIZE } from "baseui/input";
 import Head from "next/head";
 import { ChangeEventHandler, useState } from "react";
 import { api } from "~/utils/api";
