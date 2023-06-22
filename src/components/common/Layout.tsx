@@ -9,13 +9,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Block height={"100vh"} display={"flex"} flexDirection={"column"}>
       <Header />
-      <Block
-        display={"flex"}
-        flexWrap
-        flex={"1 1 0"}
-        // justifyContent={"space-between"}
-        alignItems={"flex-start"}
-      >
+      <Block display={"flex"} flexWrap flex={"1 1 0"} alignItems={"center"}>
         <SideNavigation />
         <Block
           flex={1}
